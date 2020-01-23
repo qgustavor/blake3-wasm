@@ -6,23 +6,25 @@
 <p>This test outputs results to the console. The expected results are the same <a href="https://github.com/dirkschumacher/blake3/blob/cb96f29156f0d7cf263f46291c3b417acfae02af/tests/testthat/test-hash.R">from those tests</a>.</p>
 
 <script type="module">
-const blake3 = await import('./blake3.js')
-await blake3.ready
+;(async function () {
+  const blake3 = await import('./blake3.js')
+  await blake3.ready
 
-let hasher = blake3.create_hasher()
-hasher.update(new TextEncoder().encode('wat'))
-let result = new Uint8Array(32)
-hasher.digest(result)
-console.log(Array.from(result).map(e => e.toString(16).padStart(2, 0)).join(''))
+  let hasher = blake3.create_hasher()
+  hasher.update(new TextEncoder().encode('wat'))
+  let result = new Uint8Array(32)
+  hasher.digest(result)
+  console.log(Array.from(result).map(e => e.toString(16).padStart(2, 0)).join(''))
 
-hasher = blake3.create_hasher()
-hasher.update(new TextEncoder().encode('test'))
-result = new Uint8Array(32)
-hasher.digest(result)
+  hasher = blake3.create_hasher()
+  hasher.update(new TextEncoder().encode('test'))
+  result = new Uint8Array(32)
+  hasher.digest(result)
 
-const keyedHasher = blake3.create_keyed(result)
-keyedHasher.update(new TextEncoder().encode('wat'))
-result = new Uint8Array(32)
-keyedHasher.digest(result)
-console.log(Array.from(result).map(e => e.toString(16).padStart(2, 0)).join(''))
+  const keyedHasher = blake3.create_keyed(result)
+  keyedHasher.update(new TextEncoder().encode('wat'))
+  result = new Uint8Array(32)
+  keyedHasher.digest(result)
+  console.log(Array.from(result).map(e => e.toString(16).padStart(2, 0)).join(''))
+}())
 </script>
