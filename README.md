@@ -2,6 +2,12 @@
 
 BLAKE3 implementation adapted from [connor4312/blake3](https://github.com/connor4312/blake3) to make it work directly from a ES Module compatible browser.
 
+**Update:** [connor4312/blake3](https://github.com/connor4312/blake3) now can be loaded directly from ES compatible browsers: https://github.com/connor4312/blake3/issues/8#issuecomment-585049723
+
+This repository will not be updated anymore.
+
+---
+
 ## Changes
 
 - [blake3_js.js](https://unpkg.com/browse/blake3@2.0.0/dist/wasm/browser/blake3_js.js) was renamed to `blake3.js`.
